@@ -3,7 +3,7 @@ import { BASE_URL } from '../constants.js'
 
 const baseQuery = fetchBaseQuery({baseUrl: BASE_URL});
 
-console.log(baseQuery);
+// console.log(baseQuery);
 
 export const apiSlice = createApi({
     baseQuery,

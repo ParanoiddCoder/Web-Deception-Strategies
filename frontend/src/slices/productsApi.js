@@ -18,5 +18,5 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     }),
 });
 
-console.log(productsApiSlice);
+// console.log(productsApiSlice);
 export const { useGetProductsQuery,useGetProductsDetailsQuery } = productsApiSlice;
