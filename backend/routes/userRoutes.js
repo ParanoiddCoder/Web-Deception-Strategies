@@ -11,7 +11,7 @@ import {
     getUsers,
     getUserById,
     logoutUser,
-} from '../controllers/userControllers.js'
+} from '../controllers/userController.js'
 
 
 router.route('/').post(registerUser).get(protect,getUsers);

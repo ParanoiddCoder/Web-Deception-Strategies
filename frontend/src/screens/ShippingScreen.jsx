@@ -4,6 +4,7 @@ import {Form , Button, FormLabel} from 'react-bootstrap'
 import { useDispatch , useSelector } from "react-redux";
 import { saveShippingAddress } from "../slices/cartSlice.js";
 import { useNavigate } from "react-router";
+import CheckoutSteps from "../components/CheckoutSteps";
 
 const ShippingScreen = () => {
     const cart = useSelector((state) => state.cart);
@@ -24,7 +25,9 @@ const ShippingScreen = () => {
         navigate('/payment');
     }
 
-    return <FormContainer>
+    return (<>
+    <CheckoutSteps step1 step2 />
+    <FormContainer>
         <h1>shipping</h1>
 
         <Form onSubmit = {submitHandler}>
@@ -70,6 +73,7 @@ const ShippingScreen = () => {
             </Button>
         </Form>
     </FormContainer>
+    </>)
 }
 
 export default ShippingScreen; 
