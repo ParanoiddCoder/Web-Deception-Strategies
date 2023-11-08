@@ -55,7 +55,7 @@ const orderSchema = new mongoose.Schema({
         required: true,
         default: 0.0,
     },
-    idPaid:{
+    isPaid:{
         type: Boolean,
         required: true,
         default: false,
