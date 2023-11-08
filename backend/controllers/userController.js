@@ -93,21 +93,22 @@ const getUserProfile = asyncHandler(async(req,res) => {
 // @route   PUT /api/users/profile
 // @access  Private
 const updateUserProfile = asyncHandler(async(req,res) => {
-    const user = User.findById(req.user._id);
+    const user = await User.findById(req.user._id);
 
     if(user){
-        user.name = req.body.name||user.name;
-        user.email = req.body.email||user.email;
+        user.name = req.body.name || user.name;
+        user.email = req.body.email || user.email;
     if(req.body.password){
         user.password = req.body.password;
     }
 
     const updatedUser = await user.save();
+
     res.status(200).json({
-        _id : updateUser._id,
-        name : updateUser.name,
-        email : updateUser.email,
-        isAdmin : updateUser.isAdmin,
+        _id : updatedUser._id,
+        name : updatedUser.name,
+        email : updatedUser.email,
+        isAdmin : updatedUser.isAdmin,
     });
     }
     else {
@@ -116,6 +117,28 @@ const updateUserProfile = asyncHandler(async(req,res) => {
     }
 });
 
+//  const user = await User.findById(req.user._id);
+
+//   if (user) {
+//     user.name = req.body.name || user.name;
+//     user.email = req.body.email || user.email;
+
+//     if (req.body.password) {
+//       user.password = req.body.password;
+//     }
+
+//     const updatedUser = await user.save();
+
+//     res.json({
+//       _id: updatedUser._id,
+//       name: updatedUser.name,
+//       email: updatedUser.email,
+//       isAdmin: updatedUser.isAdmin,
+//     });
+//   } else {
+//     res.status(404);
+//     throw new Error('User not found');
+//   }
 
 // @desc    Get all users
 // @route   GET /api/users
