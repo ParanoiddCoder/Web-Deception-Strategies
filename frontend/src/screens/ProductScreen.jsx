@@ -3,7 +3,7 @@ import { useParams,useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Form,Row,Col,Image,ListGroup,Card,Button, ListGroupItem } from "react-bootstrap";
 import Rating from "../components/Rating";
-import { useGetProductsDetailsQuery } from "../slices/productsApi";
+import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { addToCart } from "../slices/cartSlice";
@@ -17,7 +17,7 @@ const ProductScreen = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const { data:product , isLoading , error} = useGetProductsDetailsQuery(productId);
+    const { data:product , isLoading , error} = useGetProductDetailsQuery(productId);
     
     const addToCartHandler = () => {
         dispatch(addToCart({...product,qty}));
