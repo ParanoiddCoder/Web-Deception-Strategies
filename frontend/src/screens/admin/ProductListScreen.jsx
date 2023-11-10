@@ -55,7 +55,7 @@ const ProductListScreen = () => {
         {loadingCreate && <Loader />}
         {isLoading ? (<Loader />) : error ? (<Message variant = 'danger'> {error?.data?.message || error.error}</Message>):(
             <>
-            <Table striped bordered hover responsive className='table-sm'>
+            <Table striped hover responsive className='table-sm'>
             <thead>
               <tr>
                 <th>ID</th>

@@ -9,7 +9,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
                 url: PRODUCTS_URL,
             }),
             keepUnusedDataFor: 5,
-            // provides : ['Products'],
+            providesTags : ['Products'],
         }),
         getProductDetails: builder.query({
             query: (id) => ({
@@ -44,6 +44,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
                 url: `${PRODUCTS_URL}/${productId}`,
                 method: 'DELETE',
             }),
+            providesTags : ['Products'],
         }),
     }),
 });
