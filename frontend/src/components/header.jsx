@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 import logo from '../assets/logo.png';
-
+import SearchBox from './SearchBox';
 
 const Header = () => {
 
@@ -47,6 +47,7 @@ const Header = () => {
                          <img src={logo} alt='Eshop' style={brandLogoStyle}/> Eshop
                      </Navbar.Brand>
                      </LinkContainer>
+                     <SearchBox />
                      <Navbar.Toggle aria-controls="basic-navbar-nav" />
                      <Navbar.Collapse id="basic-navbar-nav">
                          <Nav className="ms-auto">
