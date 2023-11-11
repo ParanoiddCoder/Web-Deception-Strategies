@@ -47,10 +47,10 @@ const Header = () => {
                          <img src={logo} alt='Eshop' style={brandLogoStyle}/> Eshop
                      </Navbar.Brand>
                      </LinkContainer>
-                     <SearchBox />
                      <Navbar.Toggle aria-controls="basic-navbar-nav" />
                      <Navbar.Collapse id="basic-navbar-nav">
                          <Nav className="ms-auto">
+                         <SearchBox />
                              <LinkContainer to="/cart">
                              <Nav.Link ><FaShoppingCart /> 
                              Cart 
