@@ -10,6 +10,14 @@ import logo from '../assets/logo.png';
 
 const Header = () => {
 
+  const brandLogoStyle = {
+    maxWidth: '50px',
+    maxHeight: '50px',
+    height: 'auto',
+    marginRight: '10px',
+    overflow: 'hidden', // This prevents the image from overflowing its container
+  };
+
     const { cartItems } = useSelector((state) => state.cart);    
 
     const { userInfo } = useSelector((state) => state.auth);
@@ -36,8 +44,7 @@ const Header = () => {
                  <Container>
                      <LinkContainer to="/">
                      <Navbar.Brand>
-                         <img src={logo} alt='proshop' />
-                         EShop
+                         <img src={logo} alt='Eshop' style={brandLogoStyle}/> Eshop
                      </Navbar.Brand>
                      </LinkContainer>
                      <Navbar.Toggle aria-controls="basic-navbar-nav" />
