@@ -55,17 +55,17 @@ const OrderScreen = () => {
             }
         });
       }
-    async  function onApproveTest(){
-        try{
-        await payOrder({orderId,details : { payer: {} }});
-        refetch();
-        toast.success('order is paid');
-        }
-        catch(error)
-        {
-            toast.error(error);
-        }
-      }
+    // async  function onApproveTest(){
+    //     try{
+    //     await payOrder({orderId,details : { payer: {} }});
+    //     refetch();
+    //     toast.success('order is paid');
+    //     }
+    //     catch(error)
+    //     {
+    //         toast.error(error);
+    //     }
+    //   }
       function onError(){
         toast.error(error.message);
       }
@@ -208,12 +208,12 @@ const OrderScreen = () => {
                   ) : (
                     <div>
                       {/* THIS BUTTON IS FOR TESTING! REMOVE BEFORE PRODUCTION! */}
-                      { <Button
+                      {/* { <Button
                         style={{ marginBottom: '10px' }}
                         onClick={onApproveTest}
                       >
                         Test Pay Order
-                      </Button>}
+                      </Button>} */}
 
                       <div>
                         <PayPalButtons

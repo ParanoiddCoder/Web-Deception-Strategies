@@ -32,7 +32,7 @@ const ShippingScreen = () => {
             toast.error('postal code is required')
         }
         else if(!country){
-            toast.error('country code is required')
+            toast.error('country is required')
         }
         else{
             dispatch(saveShippingAddress({address , city , postalCode , country}));
