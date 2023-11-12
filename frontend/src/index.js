@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 // import 'bootstrap/dist/css/bootstrap.min.css';
+import {HelmetProvider} from 'react-helmet-async';
 import { Provider } from 'react-redux';
 import store from './store';
 import './assets/styles/bootstrap.custom.css';
@@ -69,11 +70,13 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <HelmetProvider>
     <Provider store = {store}>
       <PayPalScriptProvider deferLoading = {true}>  
         <RouterProvider router={router} />
       </PayPalScriptProvider>
     </Provider>
+    </HelmetProvider>
   </React.StrictMode>
 );
 
