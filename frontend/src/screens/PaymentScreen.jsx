@@ -12,7 +12,7 @@ const PaymentScreen = () => {
   const { shippingAddress } = cart;
 
   useEffect(() => {
-    if (!shippingAddress.address || !shippingAddress.address.city) {
+    if (!shippingAddress.address || !shippingAddress.city) {
       navigate('/shipping');
     }
   }, [navigate, shippingAddress]);

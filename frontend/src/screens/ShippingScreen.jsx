@@ -5,6 +5,7 @@ import { useDispatch , useSelector } from "react-redux";
 import { saveShippingAddress } from "../slices/cartSlice.js";
 import { useNavigate } from "react-router";
 import CheckoutSteps from "../components/CheckoutSteps";
+import { toast } from "react-toastify";
 
 const ShippingScreen = () => {
     const cart = useSelector((state) => state.cart);
@@ -21,8 +22,22 @@ const ShippingScreen = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(saveShippingAddress({address , city , postalCode , country}));
-        navigate('/payment');
+        if(!address){
+            toast.error('address is required')
+        }
+        else if(!city){
+            toast.error('city is required')
+        }
+        else if(!postalCode){
+            toast.error('postal code is required')
+        }
+        else if(!country){
+            toast.error('country code is required')
+        }
+        else{
+            dispatch(saveShippingAddress({address , city , postalCode , country}));
+            navigate('/payment');
+        }
     }
 
     return (<>
