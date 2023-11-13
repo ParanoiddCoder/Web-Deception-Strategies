@@ -27,6 +27,7 @@ const HomeScreen = () => {
             <>
             <h1>Latest Products</h1>
             <Meta />
+            {!data.products[0] && <Message variant = 'danger'> search failed : no product found</Message>}
             <Row>
                 {data.products.map((product)=> (
                     <Col key={product._id} sm={12} md={12} lg={4} xl={3}>
