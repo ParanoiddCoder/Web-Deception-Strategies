@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import Loader from "../components/Loader";
 import Message from '../components/Message';
 import { FaTimes } from 'react-icons/fa';
-
+import Meta from "../components/Meta";
 
 const ProfileScreen = () => {
 
@@ -53,6 +53,7 @@ const ProfileScreen = () => {
 
     return (
         <Row>
+            <Meta title = 'user profile' />
             <Col md={3}>
             <Form onSubmit = {submitHandler}>
                 <h1>User Profile</h1>
@@ -133,7 +134,7 @@ const ProfileScreen = () => {
                 )}
             </td>
             <td>
-                <LinkContainer to={`order/${order._id}`}>
+                <LinkContainer to={`/order/${order._id}`}>
                     <Button className = 'btn-sm' variant = 'light'> 
                         Details
                     </Button>

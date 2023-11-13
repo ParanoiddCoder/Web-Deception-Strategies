@@ -6,6 +6,7 @@ import { saveShippingAddress } from "../slices/cartSlice.js";
 import { useNavigate } from "react-router";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { toast } from "react-toastify";
+import Meta from "../components/Meta";
 
 const ShippingScreen = () => {
     const cart = useSelector((state) => state.cart);
@@ -41,6 +42,7 @@ const ShippingScreen = () => {
     }
 
     return (<>
+    <Meta title = 'shipping details' />
     <CheckoutSteps step1 step2 />
     <FormContainer>
         <h1>shipping</h1>

@@ -7,6 +7,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { toast } from "react-toastify";
 import { useParams } from "react-router";
 import Paginate from "../../components/Paginate";
+import Meta from "../../components/Meta";
 
 const ProductListScreen = () => {
 
@@ -45,6 +46,7 @@ const ProductListScreen = () => {
     }
     return (
         <>
+        <Meta title = 'list of products' />
         <Row className="align-items-center">
             <Col>
                <h1>Products</h1>
@@ -75,7 +77,7 @@ const ProductListScreen = () => {
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td>{product.name}</td>
-                  <td>${product.price}</td>
+                  <td>₹{product.price}</td>
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
                   <td>

@@ -7,6 +7,7 @@ import { useParams } from "react-router";
 import Paginate from "../components/Paginate";
 import { Link } from "react-router-dom";
 import ProductCarousel from "../components/ProductCarousel";
+import Meta from "../components/Meta";
 
 
 const HomeScreen = () => {
@@ -25,6 +26,7 @@ const HomeScreen = () => {
             {isLoading ? (<Loader />) : error ? (<Message variant = 'danger'>{error?.data?.message || error.error }</Message>) : (
             <>
             <h1>Latest Products</h1>
+            <Meta />
             <Row>
                 {data.products.map((product)=> (
                     <Col key={product._id} sm={12} md={12} lg={4} xl={3}>

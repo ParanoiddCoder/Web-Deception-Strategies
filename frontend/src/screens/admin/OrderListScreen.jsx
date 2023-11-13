@@ -4,13 +4,14 @@ import Message from '../../components/Message';
 import { FaTimes } from 'react-icons/fa';
 import {  Button , Table } from "react-bootstrap"
 import { LinkContainer } from "react-router-bootstrap";
-
+import Meta from "../../components/Meta";
 
 const OrderListScreen = () => {
     const { data: orders, isLoading, error } = useGetOrdersQuery();
     
     return (
         <div>
+            <Meta title = 'list of orders' />
            { isLoading ? <Loader /> : error ? (<Message variant = 'danger'> {error?.data?.message || error.error}</Message>) : ( 
                  <Table striped hover responsive className = 'table-sm'>
                  <thead>

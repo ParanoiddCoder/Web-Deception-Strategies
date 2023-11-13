@@ -5,6 +5,7 @@ import { FaEdit , FaTrash ,FaTimes ,FaCheck } from 'react-icons/fa';
 import {  Button , Table , Row , Col } from "react-bootstrap"
 import { LinkContainer } from "react-router-bootstrap";
 import { toast } from "react-toastify";
+import Meta from "../../components/Meta";
 
 const UserListScreen = () => {
 
@@ -28,6 +29,7 @@ const UserListScreen = () => {
     }
     return (
         <>
+        <Meta title = 'list of users' />
         <Row className="align-items-center">
             <Col>
                <h1>Users</h1>
