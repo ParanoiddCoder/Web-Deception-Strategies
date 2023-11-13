@@ -5,12 +5,12 @@ import Rating from './Rating'
 const Product = ({product}) => {
     const cardStyle = {
         // Set a fixed height for the card
-        height: '100%', // Adjust this value as needed
+        height: '95%', // Adjust this value as needed
       };
     
       const imageStyle = {
         // Set a fixed height for the image
-        height: '200px', // Adjust this value as needed
+        // height: '200px', // Adjust this value as needed
         // Ensure the image covers the entire container while maintaining its aspect ratio
         objectFit: 'cover',
       };

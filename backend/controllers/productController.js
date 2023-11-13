@@ -137,6 +137,49 @@ const createProductReview = asyncHandler(async(req,res) => {
     }
 });
 
+ // @desc   delete a review
+// @route   DELETE /api/products/:id/reviews
+// @access  Private
+const deleteProductReview = async (req, res) => {
+  const productId = req.params.id;
+
+  try {
+    // Find the product by ID
+    const product = await Product.findById(productId);
+
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    // Find the index of the review for the specified user
+    const reviewIndex = product.reviews.findIndex(
+      (review) => review.user.toString() === req.user._id.toString()
+    );
+
+    // Check if the user has a review for this product
+    if (reviewIndex === -1) {
+      return res.status(404).json({ message: 'Review not found for this user' });
+    }
+
+    // Remove the review
+    product.reviews.splice(reviewIndex, 1);
+
+    // Update the product's average rating and number of reviews
+    product.rating =
+      product.reviews.reduce((acc, review) => acc + review.rating, 0) /
+      product.reviews.length;
+    product.numReviews = product.reviews.length;
+
+    // Save the updated product
+    await product.save();
+
+    return res.status(200).json({ message: 'Review deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
 // @desc    fetch top products
 // @route GET /api/products/top
 // @access public
@@ -147,4 +190,4 @@ const getTopProducts = asyncHandler(async(req,res) => {
 });
 
 
-export {getProducts,getProductById,createProduct,updateProduct,deleteProduct,createProductReview,getTopProducts};
+export {getProducts,getProductById,createProduct,updateProduct,deleteProduct,createProductReview,getTopProducts,deleteProductReview};

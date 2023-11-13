@@ -3,13 +3,14 @@ import { useParams,useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Form,Row,Col,Image,ListGroup,Card,Button, ListGroupItem } from "react-bootstrap";
 import Rating from "../components/Rating";
-import { useGetProductDetailsQuery,useCreateReviewMutation } from "../slices/productsApiSlice";
+import { useGetProductDetailsQuery,useCreateReviewMutation,useDeleteReviewMutation } from "../slices/productsApiSlice";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { addToCart } from "../slices/cartSlice";
 import { useDispatch,useSelector } from "react-redux";
 import {toast} from 'react-toastify'
 import Meta from "../components/Meta";
+import { FaTrash } from "react-icons/fa";
 
 const ProductScreen = () => {
     const { id:productId } = useParams();
@@ -24,6 +25,8 @@ const ProductScreen = () => {
     const { data:product , isLoading , refetch, error} = useGetProductDetailsQuery(productId);
     
     const [createReview, { isLoading : loadingProductReview}] = useCreateReviewMutation();
+
+    const [deleteReview , { isLoading : loadingDeleteReview }] = useDeleteReviewMutation();
 
     const {userInfo} = useSelector((state) => state.auth);
 
@@ -47,6 +50,16 @@ const ProductScreen = () => {
             toast.error(err?.data?.message || err.error);
         }
     };
+
+    const deleteHandler = async(e) => {
+      try {
+        await deleteReview(productId).unwrap();
+        refetch();
+        toast.success('review deleted');
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
+  };
 
     return (
         <>
@@ -143,10 +156,26 @@ const ProductScreen = () => {
               <ListGroup variant='flush'>
                 {product.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
-                    <strong>{review.name}</strong>
-                    <Rating value={review.rating} />
-                    <p>{review.createdAt.substring(0, 10)}</p>
-                    <p>{review.comment}</p>
+                    <Row>
+                      <Col md = {10}>
+                        <strong>{review.name}</strong>
+                        <Rating value={review.rating} />
+                        <p>{review.createdAt.substring(0, 10)}</p>
+                        <p>{review.comment}</p>
+                      </Col>
+                      { review.user === userInfo._id &&
+                      (<Col>
+                        {loadingDeleteReview && <Loader />}
+                        <Button
+                        variant = 'light'
+                        className='btn-sm'
+                        onClick={() => deleteHandler(product._id)}
+                        >
+                        <FaTrash style={{ color: 'black' }} />
+                        </Button>
+                      </Col>)
+                      } 
+                    </Row>
                   </ListGroup.Item>
                 ))}
                 <ListGroup.Item>
