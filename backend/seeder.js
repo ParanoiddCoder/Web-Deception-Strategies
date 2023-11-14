@@ -14,13 +14,13 @@ connectDB();
 
 const importData = async () => {
     try {
-        await Order.deleteMany();
-        await Product.deleteMany();
-        await User.deleteMany();
+        // await Order.deleteMany();
+        // await Product.deleteMany();
+        // await User.deleteMany();
 
-        const createUsers = await User.insertMany(users);// contains all users that were successfully added
+        // const createUsers = await User.insertMany(users);// contains all users that were successfully added
 
-        const adminUser = createUsers[0]._id;
+        const adminUser = '65329b8f1e03cae345595faf';
 
         const sampleProducts =products.map((product) => {
             return {...product, user:adminUser}  //will add the user in the product objects property as the one who listed the product
@@ -57,3 +57,6 @@ else
 {
     importData();
 }
+
+
+
